@@ -2,6 +2,8 @@ FROM openjdk:8
 
 ARG MESOS_VERSION=1.2.1
 
+RUN touch /usr/local/bin/systemctl && chmod +x /usr/local/bin/systemctl
+
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BF \
  && echo "deb http://repos.mesosphere.io/debian jessie main" > /etc/apt/sources.list.d/mesosphere.list \
  && apt-get -y update \
