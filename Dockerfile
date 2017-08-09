@@ -9,9 +9,14 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BF \
  && wget http://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz -O /tmp/spark.tgz \
  && mkdir /spark \
  && tar zxf /tmp/spark.tgz -C /spark --strip-components 1 \
+ && apt-get -y install --no-install-recommends python-pip python-setuptools python-wheel \
  && apt-get remove -y wget \
  && apt-get clean -y \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN pip install PyYAML==3.12 \
+ && pip install elasticsearch==5.4.0 \
+ && pip install kafka==1.3.3
 
 ENV PATH=/spark/bin:$PATH
 
