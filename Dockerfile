@@ -1,4 +1,4 @@
-FROM openjdk:8:1.8.0_121
+FROM openjdk:8u121
 
 ARG MESOS_VERSION=1.2.1
 
