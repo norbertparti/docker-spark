@@ -12,9 +12,14 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E56151BF \
  && echo "7a186a2a007b2dfd880571f7214a7d329c972510a460a8bdbef9f7f2a891019343c020f74b496a61e5aa42bc9e9a79cc99defe5cb3bf8b6f49c07e01b259bc6b /tmp/spark.tgz" | sha512sum -c - \
  && mkdir /spark \
  && tar zxf /tmp/spark.tgz -C /spark --strip-components 1 \
+ && apt-get -y install python-pip \
  && apt-get remove -y wget \
  && apt-get clean -y \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ 
+RUN pip install PyYAML==3.12 \
+ && pip install elasticsearch==5.4.0 \
+ && pip install kafka==1.3.3
 
 ENV PATH=/spark/bin:$PATH
 
