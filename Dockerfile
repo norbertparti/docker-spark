@@ -1,6 +1,6 @@
 FROM openjdk:8u121
 
-ARG MESOS_VERSION=1.4.1
+ARG MESOS_VERSION=1.5.0
 
 RUN touch /usr/local/bin/systemctl && chmod +x /usr/local/bin/systemctl
 
