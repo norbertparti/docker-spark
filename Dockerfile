@@ -5,10 +5,7 @@ ARG MESOS_VERSION=1.6.0
 RUN apt-get update \
  && apt-get install -y openjdk-8-jdk \
  && apt-get install -y ant \
- && apt-get clean \
- && apt-get update \
  && apt-get install ca-certificates-java \
- && apt-get clean \
  && update-ca-certificates -f \
  && touch /usr/local/bin/systemctl && chmod +x /usr/local/bin/systemctl \
  && apt-get install -y gnupg \
@@ -28,10 +25,7 @@ RUN apt-get update \
  && apt-get remove -y wget \
  && apt-get clean -y \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
- && ldconfig \
- && mv /usr/lib/python2.7/site-packages/* /usr/lib/python2.7/dist-packages/ \
- && rm -rf /usr/lib/python2.7/site-packages \
- && ln -s /usr/lib/python2.7/dist-packages /usr/lib/python2.7/site-packages;
+ && ldconfig
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV PATH=/spark/bin:$PATH
