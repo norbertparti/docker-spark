@@ -2,16 +2,15 @@ FROM ubuntu:16.04
 
 ARG MESOS_VERSION=1.6.0
 
-RUN apt-get update \
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv DF7D54CBE56151BF \
+ && echo "deb http://repos.mesosphere.io/ubuntu xenial main" > /etc/apt/sources.list.d/mesosphere.list \
+ && apt-get -y update \
  && apt-get install -y openjdk-8-jdk \
  && apt-get install -y ant \
  && apt-get install ca-certificates-java \
  && update-ca-certificates -f \
  && touch /usr/local/bin/systemctl && chmod +x /usr/local/bin/systemctl \
  && apt-get install -y gnupg \
- && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv DF7D54CBE56151BF \
- && echo "deb http://repos.mesosphere.io/ubuntu xenial main" > /etc/apt/sources.list.d/mesosphere.list \
- && apt-get -y update \
  && apt-get -y install --no-install-recommends "mesos=${MESOS_VERSION}*" wget libcurl3-nss \
  && apt-get -y install libatlas3-base libopenblas-base \
  && update-alternatives --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3 \
