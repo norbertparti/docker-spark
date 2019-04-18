@@ -18,7 +18,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv DF7D54CBE56151B
  && ln -sfT /usr/lib/libblas.so.3 /usr/lib/libblas.so \
  && ln -sfT /usr/lib/liblapack.so.3 /usr/lib/liblapack.so \
  && wget http://apache.cs.uu.nl/spark/spark-2.4.1/spark-2.4.1-bin-hadoop2.7.tgz -O /tmp/spark.tgz \
- && echo "51cad7ec8a78e3855a1d6a76e097697d79ab4ac53f75d5b587f9131608c19a87632cf77bc72bbdb9282953761f0e0f8935223473680861a59bc2f99ac0cb8ec2 /tmp/spark.tgz" | sha512sum -c - \
+ && echo "360a7b57290537c5eb3570c70d0d0b9580c4f9db8d0fa9746c3bbb6544bbb8f629901582968955aceb5649cb9d66c2d524971e4e3ef34c35d96f02ff6dba4d72 /tmp/spark.tgz" | sha512sum -c - \
  && mkdir /spark \
  && tar zxf /tmp/spark.tgz -C /spark --strip-components 1 \
  && apt-get remove -y wget \
