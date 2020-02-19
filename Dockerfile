@@ -26,6 +26,13 @@ RUN echo "deb http://repos.mesosphere.io/debian stretch main" > /etc/apt/sources
  && echo "2426A20C548BDFC07DF288CD1D18D1DA6B3189D0B78DEE76FA034C52A4E02895F0AD460720C526F163BA63A17EFAE4764C46A1CD8F9B04C60F9937A554DB85D2 /tmp/spark.tgz" | sha512sum -c - \
  && mkdir /spark \
  && tar zxf /tmp/spark.tgz -C /spark --strip-components 1 \
+ && apt install -y curl build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev \
+ && curl -O https://www.python.org/ftp/python/3.7.6/Python-3.7.6.tar.xz \
+ && tar -xf Python-3.7.6.tar.xz \
+ && cd Python-3.7.6 \
+ && ./configure --enable-optimizations \
+ && make -j 8 && make altinstall \
+ && cd .. && rm -rf Python-3.7.6 \
  && apt-get remove -y wget \
  && apt-get clean -y \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
