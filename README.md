@@ -1,1 +1,1 @@
-docker container for spark, contains mesos client library
+Docker container for spark, contains mesos client library
