@@ -40,7 +40,7 @@ RUN echo "deb http://repos.mesosphere.io/debian stretch main" > /etc/apt/sources
  && apt-get install -y ant \
  && touch /usr/local/bin/systemctl && chmod +x /usr/local/bin/systemctl \
  && apt-get -y install --no-install-recommends "mesos=${MESOS_VERSION}*" wget libcurl3-nss \
- && apt-get -y install libatlas3-base libopenblas-base \
+ && apt-get -y install libatlas3-base libopenblas-base libsqlite3\
  && update-alternatives --set libblas.so.3 /usr/lib/openblas-base/libblas.so.3 \
  && update-alternatives --set liblapack.so.3 /usr/lib/openblas-base/liblapack.so.3 \
  && ln -sfT /usr/lib/libblas.so.3 /usr/lib/libblas.so \
