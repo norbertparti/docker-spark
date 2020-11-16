@@ -1,6 +1,6 @@
 FROM debian:stretch-20200130-slim as spark_downloader
 
-ARG SPARK_VERSION=2.4.5
+ARG SPARK_VERSION=2.4.7
 ARG SPARK_SUM=2426A20C548BDFC07DF288CD1D18D1DA6B3189D0B78DEE76FA034C52A4E02895F0AD460720C526F163BA63A17EFAE4764C46A1CD8F9B04C60F9937A554DB85D2
 RUN apt-get -y update && apt-get install -y wget
 RUN wget "http://xenia.sote.hu/ftp/mirrors/www.apache.org/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz" -O /tmp/spark.tgz \
