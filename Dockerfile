@@ -34,6 +34,7 @@ RUN mkdir -p /usr/share/man/man1
 RUN echo "deb http://repos.mesosphere.io/debian stretch main" > /etc/apt/sources.list.d/mesosphere.list \
  && apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF \
  && apt-get -y update \
+ && apt-get install -y git \
  && apt-get install -y openjdk-8-jdk \
  && apt-get install ca-certificates-java \
  && update-ca-certificates -f \
